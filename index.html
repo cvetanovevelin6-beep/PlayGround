@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07111e" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23ff8b38' d='M32 2 60 18v28L32 62 4 46V18z'/%3E%3Cpath fill='%2308111d' d='m32 12 18 10v20L32 52 14 42V22z'/%3E%3Cpath fill='%23ffd18b' d='M30 18h4v13h13v4H34v13h-4V35H17v-4h13z'/%3E%3C/svg%3E" />
+  <title>New Vestroia — Bakugan Battle Arena</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="New Vestroia home">
+        <span class="brand-mark"><span></span><i></i></span>
+        <span class="brand-copy"><strong>BAKUGAN</strong><small>NEW VESTROIA</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-view="battle">Battle arena</button>
+        <button class="nav-link" id="open-codex">Bakugan codex</button>
+      </nav>
+      <div class="top-actions">
+        <div class="season-tag"><span class="live-dot"></span> SEASON 02 <b>·</b> VESTROIA</div>
+        <button class="icon-btn" id="sound-toggle" aria-label="Toggle sound" title="Toggle sound"><span id="sound-icon">♪</span></button>
+        <button class="profile-chip" id="profile-button"><span class="profile-avatar">D</span><span>PLAYER 01</span><span class="chevron">⌄</span></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro-row">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-line"></span> BATTLE SIMULATOR <span class="eyebrow-muted">/ NEW VESTROIA</span></div>
+          <h1>THE ARENA <span>IS YOURS.</span></h1>
+          <p class="intro-copy">Roll into the fight. Rally your partner. Take back New Vestroia.</p>
+        </div>
+        <div class="match-status"><span class="status-pulse"></span><div><b>LIVE MATCH</b><small>Resistance outpost · Sector 7</small></div><span class="status-time" id="match-clock">03:42</span></div>
+      </section>
+
+      <section class="game-layout" aria-label="Bakugan battle game">
+        <aside class="side-panel player-panel">
+          <div class="panel-kicker"><span>YOUR SQUAD</span><span class="squad-count" id="squad-count">01 / 06</span></div>
+          <div class="trainer-card" id="player-trainer">
+            <div class="trainer-art dan-art"><span class="art-glow"></span><span class="trainer-initial">D</span><span class="art-sparks">✦</span></div>
+            <div class="trainer-info"><span class="role-label">RESISTANCE · PYRUS</span><h2 id="player-name">Dan Kuso</h2><p id="player-quote">“Let's do this, partner!”</p></div>
+            <button class="switch-btn" id="roster-toggle" aria-label="Choose character">↗</button>
+          </div>
+          <div class="partner-label"><span>ACTIVE PARTNER</span><span class="attribute-pill pyrus" id="partner-attribute">PYRUS</span></div>
+          <div class="partner-card" id="partner-card">
+            <div class="bakugan-orb pyrus-orb" id="player-orb"><span class="orb-ring"></span><span class="orb-core">✦</span><span class="orb-eyes"></span></div>
+            <div class="partner-info"><h3 id="partner-name">Neo Dragonoid</h3><span id="partner-evolution">EVOLUTION I <i>•</i> DRAGON TYPE</span><div class="power-line"><span>G-POWER</span><b id="player-power">640<span>G</span></b></div></div>
+          </div>
+          <div class="squad-picker" id="squad-picker" aria-label="Choose a Resistance brawler"></div>
+          <div class="team-stat"><div class="team-stat-head"><span>CORE ENERGY</span><b id="core-label">0 <small>/ 3</small></b></div><div class="core-track"><i id="core-fill"></i><span></span><span></span><span></span></div><small>Win 3 cores to secure the arena</small></div>
+          <div class="side-footer"><span class="rank-badge">◆</span><div><b>RESISTANCE RECRUIT</b><small>Rank 01 · Rookie</small></div><span class="rank-progress">0 / 500 XP</span></div>
+        </aside>
+
+        <section class="arena-column">
+          <div class="arena-toolbar"><div class="arena-title"><span class="arena-live-dot"></span><div><b>SECTOR 7 SHOWDOWN</b><small>NEW VESTROIA · OPEN FIELD</small></div></div><div class="round-chip">ROUND <b id="round-number">01</b><span>/ 05</span></div><button class="more-btn" id="reset-button" title="Restart match" aria-label="Restart match">↻</button></div>
+          <div class="arena" id="arena">
+            <div class="arena-grid"></div><div class="arena-horizon"></div>
+            <div class="arena-scanline"></div><div class="arena-corner corner-tl"></div><div class="arena-corner corner-tr"></div><div class="arena-corner corner-bl"></div><div class="arena-corner corner-br"></div>
+            <div class="arena-location"><span class="location-icon">⌖</span> VESTROIA FRONTIER <span>·</span> 04:17 PM</div>
+            <div class="battle-side left-side">
+              <div class="battle-label player-battle-label"><span>RESISTANCE</span><b id="arena-player-name">DAN &amp; DRAGO</b></div>
+              <div class="battle-creature player-creature" id="player-creature"><div class="creature-aura"></div><div class="creature-body drago-body"><span class="creature-spike spike-a"></span><span class="creature-spike spike-b"></span><span class="creature-wing wing-a"></span><span class="creature-wing wing-b"></span><span class="creature-face"><i></i><i></i></span><span class="creature-tail"></span></div><div class="creature-shadow"></div></div>
+              <div class="arena-gauge player-gauge"><span>G-POWER</span><div class="g-bar"><i id="player-gbar"></i></div><b id="arena-player-power">640<span>G</span></b></div>
+              <div class="ground-glow pyrus-ground"></div>
+            </div>
+            <div class="arena-center"><div class="vs-ring"><span>VS</span></div><div class="gate-card"><div class="gate-emblem">✦</div><small>GATE CARD</small><b id="gate-name">FIRE WALL</b></div><div class="battle-log" id="battle-log"><span class="log-dot"></span><span id="log-text">Your Bakugan is ready. Make your move!</span></div></div>
+            <div class="battle-side right-side">
+              <div class="battle-label rival-battle-label"><span id="rival-faction">VEXOS</span><b id="arena-rival-name">SPECTRA &amp; HELIOS</b></div>
+              <div class="battle-creature rival-creature" id="rival-creature"><div class="creature-aura rival-aura"></div><div class="creature-body helios-body"><span class="creature-spike spike-a"></span><span class="creature-spike spike-b"></span><span class="creature-wing wing-a"></span><span class="creature-wing wing-b"></span><span class="creature-face"><i></i><i></i></span><span class="creature-tail"></span></div><div class="creature-shadow"></div></div>
+              <div class="arena-gauge rival-gauge"><span>G-POWER</span><div class="g-bar"><i id="rival-gbar"></i></div><b id="arena-rival-power">600<span>G</span></b></div>
+              <div class="ground-glow dark-ground"></div>
+            </div>
+            <div class="arena-announce" id="arena-announce"><span>BAKUGAN BRAWL!</span></div>
+          </div>
+          <div class="battle-controls">
+            <div class="phase-indicator"><span class="phase-number" id="phase-number">01</span><div><b id="phase-title">YOUR TURN</b><small id="phase-description">Roll your Bakugan onto the gate card</small></div></div>
+            <div class="action-area" id="action-area"><button class="primary-action" id="roll-button"><span class="action-icon">➤</span> ROLL BAKUGAN <kbd>SPACE</kbd></button></div>
+            <div class="turn-help"><span class="help-icon">i</span><span id="turn-help-text">Roll first to reveal your battle bonus.</span></div>
+          </div>
+          <div class="ability-row"><div class="ability-heading"><span>ABILITY CARDS</span><small>Choose one after you roll <b>·</b> <span id="cards-remaining">3</span> READY</small></div><div class="ability-cards" id="ability-cards"></div></div>
+        </section>
+
+        <aside class="side-panel rival-panel">
+          <div class="panel-kicker"><span>OPPONENT</span><span class="threat-indicator"><i></i> THREAT: HIGH</span></div>
+          <div class="trainer-card rival-trainer-card"><div class="trainer-art spectra-art"><span class="art-glow"></span><span class="trainer-initial">S</span><span class="art-sparks">✦</span></div><div class="trainer-info"><span class="role-label vexos-label" id="rival-role">VEXOS COMMANDER</span><h2 id="rival-name">Spectra Vexos</h2><p id="rival-quote">“You cannot defeat perfection.”</p></div><button class="rival-emblem" id="rival-emblem" aria-label="Switch opponent">V</button></div>
+          <div class="partner-label"><span>OPPONENT PARTNER</span><span class="attribute-pill haos" id="rival-attribute">PYRUS</span></div>
+          <div class="partner-card rival-partner-card"><div class="bakugan-orb helios-orb" id="rival-orb"><span class="orb-ring"></span><span class="orb-core">✦</span><span class="orb-eyes"></span></div><div class="partner-info"><h3 id="rival-partner-name">Viper Helios</h3><span id="rival-evolution">MECHANICAL · DRAGON TYPE</span><div class="power-line"><span>G-POWER</span><b id="rival-panel-power">600<span>G</span></b></div></div></div>
+          <div class="rival-intel"><div class="intel-title"><span>◈</span> BATTLE INTEL</div><div class="intel-row"><span>Combat style</span><b id="rival-style">Aggressive</b></div><div class="intel-row"><span>Attribute</span><b id="rival-intel-attribute">Pyrus <i class="tiny-flame">◆</i></b></div><div class="intel-row"><span>Win streak</span><b id="rival-streak">04 <small>W</small></b></div><div class="intel-note"><span>“</span><p id="intel-message">Watch for a heavy power spike after the gate opens.</p></div></div>
+          <div class="match-record"><div><span>YOUR RECORD</span><b id="record-line">0 W <i>—</i> 0 L</b></div><div class="record-medal">✦</div></div>
+        </aside>
+      </section>
+      <footer class="page-footer"><div><span class="footer-mark">✦</span> FIGHT FOR THE FUTURE OF VESTROIA</div><div><span>Fan-made tribute game · Not affiliated with Spin Master or Nelvana</span><b>NEW VESTROIA <i>◆</i> 2026</b></div></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="modal-backdrop" id="modal-backdrop" aria-hidden="true"><section class="codex-modal" role="dialog" aria-modal="true" aria-labelledby="codex-title"><div class="modal-head"><div><span class="eyebrow"><span class="eyebrow-line"></span> ARCHIVE DATABASE</span><h2 id="codex-title">BAKUGAN <span>CODEX</span></h2></div><button class="close-modal" id="close-codex" aria-label="Close codex">×</button></div><p class="codex-intro">The brawlers and partners who shaped the battle for New Vestroia. Select a Resistance brawler in your squad to take their place in the arena.</p><div class="codex-filters"><button class="filter-chip selected" data-filter="all">ALL FACTIONS</button><button class="filter-chip" data-filter="resistance">RESISTANCE</button><button class="filter-chip" data-filter="vexos">VEXOS</button></div><div class="codex-grid" id="codex-grid"></div><div class="codex-foot"><span>DATABASE ENTRY · NEW VESTROIA ERA</span><span id="codex-count">14 ENTRIES</span></div></section></div>
+  <div class="result-overlay" id="result-overlay"><div class="result-card"><div class="result-sigil" id="result-sigil">✦</div><span class="eyebrow"><span class="eyebrow-line"></span> MATCH COMPLETE</span><h2 id="result-title">VICTORY</h2><p id="result-copy">New Vestroia is one step closer to freedom.</p><div class="result-score" id="result-score">3 <span>—</span> 1</div><button class="primary-action" id="play-again">PLAY AGAIN <span>↻</span></button></div></div>
+  <script src="game.js"></script>
+</body>
+</html>
